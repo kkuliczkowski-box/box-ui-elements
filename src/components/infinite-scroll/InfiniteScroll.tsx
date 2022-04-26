@@ -107,7 +107,7 @@ function InfiniteScroll({
             container.addEventListener('resize', resizeHandler);
         }
 
-        return function() {
+        return function removeEventListeners() {
             if (container) {
                 container.removeEventListener('scroll', scrollHandler);
                 container.removeEventListener('resize', resizeHandler);
