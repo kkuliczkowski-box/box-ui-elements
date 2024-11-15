@@ -8,6 +8,7 @@ import { useIntl } from 'react-intl';
 
 import { ArrowsExpand } from '@box/blueprint-web-assets/icons/Fill';
 import { IconButton } from '@box/blueprint-web';
+import { BoxAiContentAnswers } from '@box/box-ai-content-answers'
 import SidebarContent from './SidebarContent';
 import { withAPIContext } from '../common/api-context';
 import { withErrorBoundary } from '../common/error-boundary';
@@ -27,7 +28,7 @@ export interface BoxAISidebarProps {
     onExpandClick: () => void;
 }
 
-function BoxAISidebar({ onExpandClick }: BoxAISidebarProps) {
+function BoxAISidebar({ aiProps, onExpandClick }: BoxAISidebarProps) {
     const { formatMessage } = useIntl();
 
     return (
@@ -44,7 +45,9 @@ function BoxAISidebar({ onExpandClick }: BoxAISidebarProps) {
             sidebarView={SIDEBAR_VIEW_BOXAI}
             title={formatMessage(messages.sidebarBoxAITitle)}
         >
-            <div className="bcs-BoxAISidebar-content" />
+            <div className="bcs-BoxAISidebar-content">
+                <BoxAiContentAnswers {...aiProps} />
+            </div>
         </SidebarContent>
     );
 }
